@@ -1,7 +1,6 @@
 body {
 	position: relative;
 	background-color: bisque;
-	background-image: radial-gradient(#ffe4c4, #f8d6ab, #ffffff);
 	margin: 0;
 	display: flex;
 	flex-direction: column;
@@ -92,7 +91,7 @@ input {
 			content: "Hover over me!";
 			position: absolute;
 			top: 1ch;
-			opacity: 0.1;
+			opacity: 0.05;
 		}
 	}
 }
