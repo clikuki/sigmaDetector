@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- What am i doing with my life... -->
+		<title>Sigma Detector</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="main.js"></script>
+	</head>
+	<body>
+		<h1>SIGMA DETECTOR</h1>
+
+		<div id="question">
+			<span>Is</span>
+			<input type="text" />
+			<span>a Sigma?</span>
+			<button id="confirm">Check</button>
+		</div>
+
+		<p>The answer is:</p>
+
+		<div class="spinner">
+			<div class="topHalf"></div>
+			<div class="bottomHalf"></div>
+			<div class="pointer"></div>
+		</div>
+
+		<section class="options" tabindex="1">
+			<div id="blacklist">
+				<span>Blacklist Names</span>
+				<textarea
+					spellcheck="false"
+					placeholder="Separate names with commas"
+				></textarea>
+			</div>
+			<div id="whitelist">
+				<span>Whitelist Names</span>
+				<textarea
+					spellcheck="false"
+					placeholder="Separate names with commas"
+				></textarea>
+			</div>
+		</section>
+	</body>
+</html>

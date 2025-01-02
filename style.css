@@ -1,0 +1,195 @@
+body {
+	position: relative;
+	background-color: bisque;
+	background-image: radial-gradient(#ffe4c4, #f8d6ab, #ffffff);
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	font-family: "Roboto Slab", serif;
+	height: 100vh;
+	height: 100dvh;
+	overflow: hidden;
+}
+
+h1 {
+	border-bottom: 1px solid black;
+	padding: 0 2rem;
+	text-align: center;
+	margin: 0 1rem;
+}
+
+input {
+	font-family: inherit;
+	text-align: center;
+}
+
+#question {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 0 1rem;
+	gap: 1ch;
+}
+
+#confirm {
+	border: none;
+	background-color: orange;
+	color: black;
+	border-radius: 2px;
+	padding: 1ch;
+	text-transform: uppercase;
+	font: inherit;
+	font-weight: 600;
+
+	&:disabled {
+		opacity: 0.6;
+	}
+}
+
+#result {
+	margin-bottom: 1rem;
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+.options {
+	position: absolute;
+	bottom: 0;
+	height: 20rem;
+	width: 100%;
+	background-color: #ffa600ee;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-items: space-evenly;
+	align-items: center;
+	transition: all 500ms ease-in-out;
+
+	#blacklist,
+	#whitelist {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+
+	textarea {
+		margin-top: 1ch;
+		resize: none;
+		width: 90%;
+		height: 70%;
+	}
+
+	&:where(:not(:hover, :focus-within)) {
+		translate: 0 18rem;
+		background-color: transparent;
+		outline: none;
+
+		&::before {
+			content: "Hover over me!";
+			position: absolute;
+			top: 1ch;
+			opacity: 0.1;
+		}
+	}
+}
+
+.spinner {
+	--size: min(20rem, 90vw);
+	--half-size: calc(var(--size) / 2);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border-radius: 100%;
+	border: 4px solid gray;
+	overflow: hidden;
+
+	.topHalf,
+	.bottomHalf {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: var(--size);
+		height: var(--half-size);
+		color: white;
+		font-size: calc(var(--size) / 6);
+	}
+	.topHalf {
+		background-color: green;
+
+		&::after {
+			content: "YES";
+		}
+	}
+	.bottomHalf {
+		background-color: red;
+
+		&::after {
+			content: "NO";
+		}
+	}
+
+	.pointer {
+		--anim-duration: 180ms;
+		--spin-count: 8;
+
+		position: absolute;
+		width: var(--half-size);
+		height: 3px;
+		background-color: black;
+		transform: translate(calc(var(--size) / 4 - 2ch), 0);
+
+		&.spin {
+			animation: spin var(--anim-duration) var(--spin-count) linear;
+		}
+		&.top {
+			animation: spinTop calc(var(--anim-duration) / 4 * 3) ease-out forwards;
+		}
+		&.bottom {
+			animation: spinBottom calc(var(--anim-duration) / 4) ease-out forwards;
+		}
+	}
+
+	&::after {
+		position: absolute;
+		width: 1ch;
+		height: 1ch;
+		border-radius: 100%;
+		overflow: hidden;
+		background-color: black;
+		content: "";
+	}
+}
+
+@keyframes spin {
+	from {
+		rotate: 0;
+	}
+	to {
+		rotate: 360deg;
+	}
+}
+
+@keyframes spinTop {
+	from {
+		rotate: 0deg;
+	}
+	to {
+		rotate: 270deg;
+	}
+}
+
+@keyframes spinBottom {
+	from {
+		rotate: 0deg;
+	}
+	to {
+		rotate: 90deg;
+	}
+}
